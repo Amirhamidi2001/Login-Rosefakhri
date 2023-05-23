@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views.generic.base import TemplateView
 
-# Create your views here.
+
+class TemplateView(TemplateView):
+    """
+    Render a template and redirect to api versions
+    """
+
+    template_name = "index.html"
