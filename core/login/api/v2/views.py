@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -12,6 +13,8 @@ from .serializers import LoginSerializer
 class LoginAPIView(APIView):
 
     serializer_class = LoginSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
 
     def post(self, request):
         # Get Username and Password from the user
